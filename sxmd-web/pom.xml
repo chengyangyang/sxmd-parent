@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>sxmd-web</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>${sxmd-web.version}</version>
 
     <description>
         提供一个常用的web包集合

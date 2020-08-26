@@ -17,6 +17,9 @@
 
     <!-- 版本控制 -->
     <properties>
+
+        <sxmd-common.version>1.0.0-SNAPSHOT</sxmd-common.version>
+        <sxmd-web.version>1.0.0-SNAPSHOT</sxmd-web.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
@@ -58,6 +61,16 @@
                 <version>${spring-cloud-alibaba.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.sxmd</groupId>
+                <artifactId>sxmd-common</artifactId>
+                <version>${sxmd-common.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.sxmd</groupId>
+                <artifactId>sxmd-web</artifactId>
+                <version>${sxmd-web.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
