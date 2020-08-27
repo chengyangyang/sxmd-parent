@@ -7,7 +7,7 @@ import com.sxmd.util.CollectionUtil;
 import java.util.List;
 
 /**
- * Description:  分页构建类  web 端使用这个
+ * Description:  分页构建类  web 端使用这个,使用mybatis-plus 分页插件
  *
  * @author cy
  * @date 2020年08月26日 17:43
@@ -15,6 +15,8 @@ import java.util.List;
  */
 public class PageBuilder {
 
+    private PageBuilder() {
+    }
 
     /**
      * Description:   构建 mybatis-plus 一个开始行
@@ -24,9 +26,9 @@ public class PageBuilder {
      * @author cy
      * @date 2020/8/26 17:26
      */
-    public static <T> PageStart<T> builderBasePage(RequestPage page) {
+    public static <T> PageStart<T> builderPageStart(RequestPage page) {
         if (page != null) {
-            builderBasePage(page.getPageNum(), page.getPageSize());
+            builderPageStart(page.getPageNum(), page.getPageSize());
         }
         return null;
     }
@@ -41,11 +43,11 @@ public class PageBuilder {
      * @author cy
      * @date 2020/8/26 17:26
      */
-    public static <T> PageStart<T> builderBasePage(Long pageNum, Long pageSize) {
+    public static <T> PageStart<T> builderPageStart(Long pageNum, Long pageSize) {
         if (pageNum != null && pageSize != null) {
-            return new PageStart<T>(pageNum, pageSize);
+            return new PageStart<>(pageNum, pageSize);
         } else {
-            new PageStart<T>(1L, 10L);
+            new PageStart<>(1L, 10L);
         }
         return null;
     }
@@ -59,8 +61,8 @@ public class PageBuilder {
      * @author cy
      * @date 2020/8/26 17:35
      */
-    public static <T> BasePage<T> builderResultPage(PageStart page, List<T> list) {
-        BasePage<T> basePage = new BasePage<T>();
+    public static <T> BasePage<T> builderResultPage(PageStart<?> page, List<T> list) {
+        BasePage<T> basePage = new BasePage<>();
         basePage.setContent(list);
         if (page != null) {
             Pageable pageable = new Pageable();
@@ -81,9 +83,9 @@ public class PageBuilder {
      * @author cy
      * @date 2020/8/26 18:04
      */
-    public static <T> BasePage<T> basePageConversion(BasePage sourceBasePage, Class<T> targetClass) {
+    public static <T> BasePage<T> basePageConversion(BasePage<?> sourceBasePage, Class<T> targetClass) {
         // 实体类转换
-        BasePage<T> targetBasePage = new BasePage<T>();
+        BasePage<T> targetBasePage = new BasePage<>();
         AssertUtil.notNull(sourceBasePage, "sourceBasePage 不能为空");
         AssertUtil.notNull(targetClass, "clazz 不能为空");
         targetBasePage.setPageable(sourceBasePage.getPageable());
