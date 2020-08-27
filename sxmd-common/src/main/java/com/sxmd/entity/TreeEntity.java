@@ -24,6 +24,6 @@ public class TreeEntity<T> {
      */
     private Object parentId;
 
-    private List<T> childList = new ArrayList<T>();
+    private List<T> childList = new ArrayList<>();
 
 }

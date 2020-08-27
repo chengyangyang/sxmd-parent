@@ -16,8 +16,10 @@ import java.util.List;
  */
 public class TreeUtil {
 
+    private TreeUtil() {
+    }
 
-    private static String ROOT_ID = "0";
+    private static String rootId = "0";
 
 
     /**
@@ -29,15 +31,13 @@ public class TreeUtil {
      * @date 2020/7/22 14:55
      */
     public static <E extends TreeEntity<E>> List<E> getTreeList(List<E> entityList) {
-        List<E> rootNode = new ArrayList<E>();
+        List<E> rootNode = new ArrayList<>();
         // 构造一个map
         HashMap<String, E> map = new HashMap<>(40);
-        entityList.stream().forEach(x -> {
-            map.put(x.getId() + "", x);
-        });
+        entityList.stream().forEach(x -> map.put(x.getId() + "", x));
 
         entityList.stream().forEach(x -> {
-            if (ROOT_ID.equals(x.getParentId() + "")) {
+            if (rootId.equals(x.getParentId() + "")) {
                 rootNode.add(x);
             } else {
                 map.get(x.getParentId() + "").getChildList().add(x);
@@ -59,18 +59,16 @@ public class TreeUtil {
         List<E> rootNode = new ArrayList<>();
         // 构造一个map
         HashMap<String, E> map = new HashMap<>(40);
-        entityList.stream().forEach(x -> {
-            map.put(x.getId() + "", x);
-        });
+        entityList.stream().forEach(x -> map.put(x.getId() + "", x));
 
         entityList.stream().forEach(x -> {
-            if (ROOT_ID.equals(x.getParentId() + "")) {
+            if (rootId.equals(x.getParentId() + "")) {
                 rootNode.add(x);
             } else {
                 map.get(x.getParentId() + "").getChildList().add(x);
             }
         });
-        if (ROOT_ID.equals(parentId)) {
+        if (rootId.equals(parentId)) {
             return rootNode;
         }
         return map.get(parentId).getChildList();

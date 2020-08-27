@@ -4,7 +4,7 @@ package com.sxmd.base;
 import com.sxmd.constant.ResponseCodeEnum;
 
 /**
- * Description: 返回数据对象
+ * Description: 公共controller
  *
  * @author cy
  * @date 2019年08月06日 15:52
@@ -12,20 +12,20 @@ import com.sxmd.constant.ResponseCodeEnum;
  */
 public class BaseController {
 
-    public JsonResult success() {
-        return new JsonResult();
+    public JsonResult<Object> success() {
+        return JsonResultBuilder.build();
     }
 
     public <T> JsonResult<T> success(T t) {
-        return new JsonResult<T>(t);
+        return JsonResultBuilder.build(t);
     }
 
-    public JsonResult fail(String message) {
-        return new JsonResult().error(message);
+    public JsonResult<Object> fail(String message) {
+        return JsonResultBuilder.build(ResponseCodeEnum.CODE_9999, message);
     }
 
-    public JsonResult fail(ResponseCodeEnum responseCodeEnum) {
-        return new JsonResult().error(responseCodeEnum);
+    public JsonResult<Object> fail(ResponseCodeEnum responseCodeEnum) {
+        return JsonResultBuilder.build(responseCodeEnum);
     }
 
 }

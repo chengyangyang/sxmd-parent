@@ -1,6 +1,8 @@
 package com.sxmd.handle;
 
 import com.sxmd.base.JsonResult;
+import com.sxmd.base.JsonResultBuilder;
+import com.sxmd.constant.ResponseCodeEnum;
 import com.sxmd.exception.SxmdException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -20,11 +22,11 @@ import java.util.List;
 public class CustomExceptionHandle {
 
     @ExceptionHandler(SxmdException.class)
-    public JsonResult handlesxmdException(SxmdException e) {
+    public JsonResult<Object> handlesxmdException(SxmdException e) {
         if (e.getResponseCodeEnum() != null) {
-            return new JsonResult().error(e.getResponseCodeEnum());
+            return JsonResultBuilder.build(e.getResponseCodeEnum());
         } else {
-            return new JsonResult().error(e.getMessage());
+            return JsonResultBuilder.build(ResponseCodeEnum.CODE_9999, e);
         }
     }
 
@@ -37,13 +39,13 @@ public class CustomExceptionHandle {
      * @date 2020/7/2 19:27
      */
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public JsonResult methodArgumentNotValidException(MethodArgumentNotValidException e) {
+    public JsonResult<Object> methodArgumentNotValidException(MethodArgumentNotValidException e) {
         List<FieldError> fieldErrors = e.getBindingResult().getFieldErrors();
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < fieldErrors.size(); i++) {
             stringBuilder.append("[" + fieldErrors.get(i).getDefaultMessage() + "]");
         }
-        return new JsonResult().error(stringBuilder.toString());
+        return JsonResultBuilder.build(ResponseCodeEnum.CODE_9999, stringBuilder.toString());
     }
 
 

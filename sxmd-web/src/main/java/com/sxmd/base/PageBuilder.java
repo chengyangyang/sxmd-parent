@@ -28,7 +28,7 @@ public class PageBuilder {
      */
     public static <T> PageStart<T> builderPageStart(RequestPage page) {
         if (page != null) {
-            builderPageStart(page.getPageNum(), page.getPageSize());
+            return builderPageStart(page.getPageNum(), page.getPageSize());
         }
         return null;
     }
@@ -70,6 +70,7 @@ public class PageBuilder {
             pageable.setPageNum(page.getCurrent());
             pageable.setPages(page.getPages());
             pageable.setPageSize(page.getSize());
+            basePage.setPageable(pageable);
         }
         return basePage;
     }

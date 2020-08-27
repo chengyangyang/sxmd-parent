@@ -1,7 +1,7 @@
 package com.sxmd.exception;
 
 import com.sxmd.constant.ResponseCodeEnum;
-import lombok.Data;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -12,23 +12,23 @@ import lombok.extern.slf4j.Slf4j;
  * Version 1.0
  */
 @Slf4j
-@Data
+@Getter
 public class SxmdException extends RuntimeException {
 
-    private static final long serialVersionUID = -3781325637548014389L;
-    private String message;
-    private ResponseCodeEnum responseCodeEnum;
+    private static final long serialVersionUID = -7285597074867143121L;
 
-    private SxmdException() {
+    private final String message;
+    private final ResponseCodeEnum responseCodeEnum;
 
-    }
 
     public SxmdException(String message) {
         log.warn(message);
         this.message = message;
+        this.responseCodeEnum = null;
     }
 
     public SxmdException(ResponseCodeEnum responseCodeEnum) {
+        this.message = null;
         log.warn(responseCodeEnum.getMessage());
         this.responseCodeEnum = responseCodeEnum;
     }
@@ -36,6 +36,7 @@ public class SxmdException extends RuntimeException {
     public SxmdException(String message, Throwable cause) {
         log.warn(message, cause);
         this.message = message;
+        this.responseCodeEnum = null;
     }
 
 }

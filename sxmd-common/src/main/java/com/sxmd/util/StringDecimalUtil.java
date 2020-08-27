@@ -13,6 +13,12 @@ import java.math.BigDecimal;
  */
 public class StringDecimalUtil {
 
+    private static final String MESSAGE_PROMPT_1 = "含有非数字参数";
+    private static final String MESSAGE_PROMPT_2 = "参数数量最少为2个";
+
+    private StringDecimalUtil() {
+    }
+
     /**
      * Description:   参数相加计算结果  如  1+2+3   参数是  1 2 3
      *
@@ -27,7 +33,7 @@ public class StringDecimalUtil {
             // 判断是否为数字
             String param = params[i];
             if (!StringUtil.isNumber(param)) {
-                throw new SxmdException("含有非数字参数:" + param);
+                throw new SxmdException(MESSAGE_PROMPT_1 + param);
             }
             startBig = startBig.add(new BigDecimal(param));
         }
@@ -49,7 +55,7 @@ public class StringDecimalUtil {
             // 判断是否为数据
             String param = params[i];
             if (!StringUtil.isNumber(param)) {
-                throw new SxmdException("含有非数字参数:" + param);
+                throw new SxmdException(MESSAGE_PROMPT_1 + param);
             }
             startBig = startBig.add(new BigDecimal(param));
         }
@@ -66,17 +72,17 @@ public class StringDecimalUtil {
      */
     public static String subtract(String... params) {
         if (params.length == 1) {
-            throw new SxmdException("参数数量最少为2个");
+            throw new SxmdException(MESSAGE_PROMPT_2);
         }
         if (!StringUtil.isNumber(params[0])) {
-            throw new SxmdException("含有非数字参数:" + params[0]);
+            throw new SxmdException(MESSAGE_PROMPT_1 + params[0]);
         }
         BigDecimal startBig = new BigDecimal(params[0]);
         for (int i = 1; i < params.length; i++) {
             // 判断是否为数字
             String param = params[i];
             if (!StringUtil.isNumber(param)) {
-                throw new SxmdException("含有非数字参数:" + param);
+                throw new SxmdException(MESSAGE_PROMPT_1 + param);
             }
             startBig = startBig.subtract(new BigDecimal(param));
         }
@@ -94,17 +100,17 @@ public class StringDecimalUtil {
      */
     public static String subtract(int decimalNum, String... params) {
         if (params.length == 1) {
-            throw new SxmdException("参数数量最少为2个");
+            throw new SxmdException(MESSAGE_PROMPT_2);
         }
         if (!StringUtil.isNumber(params[0])) {
-            throw new SxmdException("含有非数字参数:" + params[0]);
+            throw new SxmdException(MESSAGE_PROMPT_1 + params[0]);
         }
         BigDecimal startBig = new BigDecimal(params[0]);
         for (int i = 1; i < params.length; i++) {
             // 判断是否为数字
             String param = params[i];
             if (!StringUtil.isNumber(param)) {
-                throw new SxmdException("含有非数字参数:" + param);
+                throw new SxmdException(MESSAGE_PROMPT_1 + param);
             }
             startBig = startBig.subtract(new BigDecimal(param));
         }
@@ -126,7 +132,7 @@ public class StringDecimalUtil {
             // 判断是否为数据
             String param = params[i];
             if (!StringUtil.isNumber(param)) {
-                throw new SxmdException("含有非数字参数:" + param);
+                throw new SxmdException(MESSAGE_PROMPT_1 + param);
             }
             startBig = startBig.multiply(new BigDecimal(param));
         }
@@ -148,7 +154,7 @@ public class StringDecimalUtil {
             // 判断是否为数据
             String param = params[i];
             if (!StringUtil.isNumber(param)) {
-                throw new SxmdException("含有非数字参数:" + param);
+                throw new SxmdException(MESSAGE_PROMPT_1 + param);
             }
             startBig = startBig.multiply(new BigDecimal(param));
         }
@@ -165,17 +171,17 @@ public class StringDecimalUtil {
      */
     public static String divide(String... params) {
         if (params.length == 1) {
-            throw new SxmdException("参数数量最少为2个");
+            throw new SxmdException(MESSAGE_PROMPT_2);
         }
         if (!StringUtil.isNumber(params[0])) {
-            throw new SxmdException("含有非数字参数:" + params[0]);
+            throw new SxmdException(MESSAGE_PROMPT_1 + params[0]);
         }
         BigDecimal startBig = new BigDecimal(params[0]);
         for (int i = 1; i < params.length; i++) {
             // 判断是否为数字
             String param = params[i];
             if (!StringUtil.isNumber(param)) {
-                throw new SxmdException("含有非数字参数:" + param);
+                throw new SxmdException(MESSAGE_PROMPT_1 + param);
             }
             startBig = startBig.divide(new BigDecimal(param));
         }
@@ -193,17 +199,17 @@ public class StringDecimalUtil {
      */
     public static String divide(int decimalNum, String... params) {
         if (params.length == 1) {
-            throw new SxmdException("参数数量最少为2个");
+            throw new SxmdException(MESSAGE_PROMPT_2);
         }
         if (!StringUtil.isNumber(params[0])) {
-            throw new SxmdException("含有非数字参数:" + params[0]);
+            throw new SxmdException(MESSAGE_PROMPT_1 + params[0]);
         }
         BigDecimal startBig = new BigDecimal(params[0]);
         for (int i = 1; i < params.length; i++) {
             // 判断是否为数字
             String param = params[i];
             if (!StringUtil.isNumber(param)) {
-                throw new SxmdException("含有非数字参数:" + param);
+                throw new SxmdException(MESSAGE_PROMPT_1 + param);
             }
             startBig = startBig.divide(new BigDecimal(param));
         }
@@ -221,10 +227,10 @@ public class StringDecimalUtil {
      */
     public static boolean compareGt(String param1, String param2) {
         if (!StringUtil.isNumber(param1)) {
-            throw new SxmdException("含有非数字参数:" + param1);
+            throw new SxmdException(MESSAGE_PROMPT_1 + param1);
         }
         if (!StringUtil.isNumber(param2)) {
-            throw new SxmdException("含有非数字参数:" + param2);
+            throw new SxmdException(MESSAGE_PROMPT_1 + param2);
         }
         BigDecimal bigDecimal1 = new BigDecimal(param1);
         BigDecimal bigDecimal2 = new BigDecimal(param2);
@@ -242,10 +248,10 @@ public class StringDecimalUtil {
      */
     public static boolean compareLt(String param1, String param2) {
         if (!StringUtil.isNumber(param1)) {
-            throw new SxmdException("含有非数字参数:" + param1);
+            throw new SxmdException(MESSAGE_PROMPT_1 + param1);
         }
         if (!StringUtil.isNumber(param2)) {
-            throw new SxmdException("含有非数字参数:" + param2);
+            throw new SxmdException(MESSAGE_PROMPT_1 + param2);
         }
         BigDecimal bigDecimal1 = new BigDecimal(param1);
         BigDecimal bigDecimal2 = new BigDecimal(param2);
@@ -263,10 +269,10 @@ public class StringDecimalUtil {
      */
     public static boolean compareEq(String param1, String param2) {
         if (!StringUtil.isNumber(param1)) {
-            throw new SxmdException("含有非数字参数:" + param1);
+            throw new SxmdException(MESSAGE_PROMPT_1 + param1);
         }
         if (!StringUtil.isNumber(param2)) {
-            throw new SxmdException("含有非数字参数:" + param2);
+            throw new SxmdException(MESSAGE_PROMPT_1 + param2);
         }
         BigDecimal bigDecimal1 = new BigDecimal(param1);
         BigDecimal bigDecimal2 = new BigDecimal(param2);
@@ -284,17 +290,17 @@ public class StringDecimalUtil {
      */
     public static String max(String... params) {
         if (params.length == 1) {
-            throw new SxmdException("参数数量最少为2个");
+            throw new SxmdException(MESSAGE_PROMPT_2);
         }
         if (!StringUtil.isNumber(params[0])) {
-            throw new SxmdException("含有非数字参数:" + params[0]);
+            throw new SxmdException(MESSAGE_PROMPT_1 + params[0]);
         }
         String startBig = params[0];
         for (int i = 1; i < params.length; i++) {
             // 判断是否为数字
             String param = params[i];
             if (!StringUtil.isNumber(param)) {
-                throw new SxmdException("含有非数字参数:" + param);
+                throw new SxmdException(MESSAGE_PROMPT_1 + param);
             }
             if (compareGt(param, startBig)) {
                 startBig = param;
@@ -313,17 +319,17 @@ public class StringDecimalUtil {
      */
     public static String min(String... params) {
         if (params.length == 1) {
-            throw new SxmdException("参数数量最少为2个");
+            throw new SxmdException(MESSAGE_PROMPT_2);
         }
         if (!StringUtil.isNumber(params[0])) {
-            throw new SxmdException("含有非数字参数:" + params[0]);
+            throw new SxmdException(MESSAGE_PROMPT_1 + params[0]);
         }
         String startBig = params[0];
         for (int i = 1; i < params.length; i++) {
             // 判断是否为数字
             String param = params[i];
             if (!StringUtil.isNumber(param)) {
-                throw new SxmdException("含有非数字参数:" + param);
+                throw new SxmdException(MESSAGE_PROMPT_1 + param);
             }
             if (compareLt(param, startBig)) {
                 startBig = param;
@@ -331,11 +337,5 @@ public class StringDecimalUtil {
         }
         return startBig;
     }
-
-
-    public static void main(String[] args) {
-        System.out.println(plus(2, "0.0000"));
-    }
-
 
 }

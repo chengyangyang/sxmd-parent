@@ -14,8 +14,10 @@ import java.time.format.DateTimeFormatter;
  * @date 2020年06月05日 16:42
  * Version 1.0
  */
-public class LocalDateTimeUtil {
+public class LocalTimeUtil {
 
+    private LocalTimeUtil() {
+    }
 
     public static String dateToString(LocalDateTime dateTime) {
         return dateTime.format(DateTimeFormatter.ofPattern(ConstantPattern.DATE_PATTERN_DATE_TIME));
@@ -28,6 +30,11 @@ public class LocalDateTimeUtil {
     public static LocalDateTime stringToLocalDateTime(String localDateTimeStr) {
         return LocalDateTime.parse(localDateTimeStr, DateTimeFormatter.ofPattern(ConstantPattern.DATE_PATTERN_DATE_TIME));
     }
+
+    public static LocalTime stringToTime(String localTimeStr) {
+        return LocalTime.parse(localTimeStr, DateTimeFormatter.ofPattern(ConstantPattern.DATE_PATTERN_TIME));
+    }
+
 
     public static LocalDate stringToLocalDate(String localDateStr) {
         return LocalDate.parse(localDateStr, DateTimeFormatter.ofPattern(ConstantPattern.DATE_PATTERN_DATE));

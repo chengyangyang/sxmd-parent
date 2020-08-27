@@ -2,6 +2,7 @@ package com.sxmd.util;
 
 import com.sxmd.constant.ResponseCodeEnum;
 import com.sxmd.exception.SxmdException;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * Description:  自定义断言工具类  抛出自定义异常
@@ -85,7 +86,7 @@ public class AssertUtil {
      * @date 2020/8/14 17:02
      */
     public static void isNotBlank(String str, String message) {
-        if (StringUtil.isNotBlank(str)) {
+        if (StringUtils.isNotBlank(str)) {
             throw new SxmdException(message);
         }
     }
@@ -100,7 +101,7 @@ public class AssertUtil {
      * @date 2020/8/14 17:02
      */
     public static void isNotBlank(String str, ResponseCodeEnum responseCodeEnum) {
-        if (StringUtil.isNotBlank(str)) {
+        if (StringUtils.isNotBlank(str)) {
             throw new SxmdException(responseCodeEnum);
         }
     }

@@ -7,11 +7,14 @@ package com.sxmd.constant;
  * @date 2020年05月08日 18:01
  * Version 1.0
  */
-public interface ConstantWeb {
+public final class ConstantWeb {
 
-    String SAVE_MSEEAGE = "数据保存成功";
-    String UPDATE_MSEEAGE = "数据更新成功";
-    String DELETE_MSEEAGE = "数据删除成功";
+    private ConstantWeb() {
+    }
+
+    public static final String SAVE_MSEEAGE = "数据保存成功";
+    public static final String UPDATE_MSEEAGE = "数据更新成功";
+    public static final String DELETE_MSEEAGE = "数据删除成功";
 
 
 }

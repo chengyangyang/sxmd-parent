@@ -20,6 +20,9 @@ import java.util.Map;
 @Slf4j
 public class ResponseUtil {
 
+    private ResponseUtil() {
+    }
+
     /**
      * Description:   response 直接返回
      *

@@ -1,6 +1,6 @@
 package com.sxmd.util;
 
-import org.apache.commons.lang3.StringUtils;
+import com.sxmd.constant.ConstantPattern;
 
 /**
  * Description: 字符串处理
@@ -9,10 +9,10 @@ import org.apache.commons.lang3.StringUtils;
  * @date 2019年06月20日 14:27
  * Version 1.0
  */
-public class StringUtil extends StringUtils {
+public class StringUtil {
 
-    public StringUtil() {
-        throw new com.sxmd.exception.SxmdException("工具类不能进行实例化");
+    private StringUtil() {
+
     }
 
     /**
@@ -107,7 +107,7 @@ public class StringUtil extends StringUtils {
         if (strLen >= strLength) {
             return str;
         }
-        StringBuffer sb = new StringBuffer(strLength - strLen);
+        StringBuilder sb = new StringBuilder(strLength - strLen);
         for (int i = 0; i < strLength - strLen; i++) {
             sb.append("0");
         }
@@ -128,7 +128,7 @@ public class StringUtil extends StringUtils {
         if (strLen >= strLength) {
             return str;
         }
-        StringBuffer sb = new StringBuffer(strLength - strLen);
+        StringBuilder sb = new StringBuilder(strLength - strLen);
         for (int i = 0; i < strLength - strLen; i++) {
             sb.append(defalut);
         }
@@ -144,7 +144,8 @@ public class StringUtil extends StringUtils {
      * @date 2020/6/28 15:32
      */
     public static boolean isNumber(String str) {
-        return str.matches("(\\s)*([+-])?(([0-9]*\\.)?([0-9]+)|([0-9]+)(\\.[0-9]*)?)([eE][\\+-]?[0-9]+)?(\\s)*");
+        return str.matches(ConstantPattern.REGEX_NUMBER);
     }
+
 
 }

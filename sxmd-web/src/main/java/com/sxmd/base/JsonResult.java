@@ -1,6 +1,5 @@
 package com.sxmd.base;
 
-import com.sxmd.constant.ResponseCodeEnum;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -26,42 +25,5 @@ public class JsonResult<T> implements Serializable {
     private String message;
     @ApiModelProperty(value = "数据内容")
     private T data;
-
-    public JsonResult() {
-        ResponseCodeEnum success = ResponseCodeEnum.CODE_0000;
-        this.code = success.name();
-        this.message = success.getMessage();
-    }
-
-    public JsonResult(ResponseCodeEnum responseEnum, T data) {
-        this.code = responseEnum.name();
-        this.message = responseEnum.getMessage();
-        this.data = data;
-    }
-
-    public JsonResult(T data) {
-        ResponseCodeEnum success = ResponseCodeEnum.CODE_0000;
-        this.code = success.name();
-        this.message = success.getMessage();
-        this.data = data;
-    }
-
-    public JsonResult error(ResponseCodeEnum responseEnum) {
-        this.code = responseEnum.name();
-        this.message = responseEnum.getMessage();
-        return this;
-    }
-
-    public JsonResult error(String message) {
-        this.code = ResponseCodeEnum.CODE_9999.name();
-        this.message = message;
-        return this;
-    }
-
-    public JsonResult error(ResponseCodeEnum responseEnum, String message) {
-        this.code = responseEnum.name();
-        this.message = message;
-        return this;
-    }
 
 }

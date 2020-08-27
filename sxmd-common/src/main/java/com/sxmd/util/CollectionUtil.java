@@ -11,19 +11,19 @@ import java.util.Collection;
  */
 public class CollectionUtil {
 
+    private CollectionUtil() {
+    }
+
     /**
      * Description:    集合 非空判断
      *
      * @param collection:
      * @return boolean
      * @author cy
-     * @date  2020/6/19 11:25
+     * @date 2020/6/19 11:25
      */
-    public static boolean isNotBlank(Collection collection){
-        if(collection != null && !collection.isEmpty()){
-            return true;
-        }
-        return false;
+    public static boolean isNotBlank(Collection<?> collection) {
+        return collection != null && !collection.isEmpty();
     }
 
     /**
@@ -32,12 +32,11 @@ public class CollectionUtil {
      * @param collection:
      * @return boolean
      * @author cy
-     * @date  2020/6/19 11:25
+     * @date 2020/6/19 11:25
      */
-    public static boolean isBlank(Collection collection){
+    public static boolean isBlank(Collection<?> collection) {
         return !isNotBlank(collection);
     }
-
 
 
 }

@@ -1,5 +1,6 @@
 package com.sxmd.util;
 
+import com.sxmd.exception.SxmdException;
 import org.springframework.cglib.beans.BeanCopier;
 
 import java.lang.reflect.Constructor;
@@ -20,17 +21,19 @@ import static java.lang.String.format;
  */
 public class BeanUtil {
 
+    private BeanUtil() {
+    }
 
-    private static final Map<String, BeanCopier> BEAN_COPIER_CACHE = new ConcurrentHashMap<>();
+    private static final Map<String, BeanCopier> BEAN_COPIER_CACHE = new ConcurrentHashMap<>(20);
 
-    private static final Map<String, Constructor> CONSTRUCTOR_ACCESS_CACHE = new ConcurrentHashMap<>();
+    private static final Map<String, Constructor<?>> CONSTRUCTOR_ACCESS_CACHE = new ConcurrentHashMap<>(20);
 
     public static void copyProperties(Object source, Object target) {
         BeanCopier copier = getBeanCopier(source.getClass(), target.getClass());
         copier.copy(source, target, null);
     }
 
-    private static BeanCopier getBeanCopier(Class sourceClass, Class targetClass) {
+    private static BeanCopier getBeanCopier(Class<?> sourceClass, Class<?> targetClass) {
         String beanKey = generateKey(sourceClass, targetClass);
         BeanCopier copier = null;
         if (!BEAN_COPIER_CACHE.containsKey(beanKey)) {
@@ -58,7 +61,7 @@ public class BeanUtil {
         try {
             t = targetClass.newInstance();
         } catch (InstantiationException | IllegalAccessException e) {
-            throw new RuntimeException(format("Create new instance of %s failed: %s", targetClass, e.getMessage()));
+            throw new SxmdException(format("Create new instance of %s failed: %s", targetClass, e.getMessage()));
         }
         copyProperties(source, t);
         return t;
@@ -77,14 +80,14 @@ public class BeanUtil {
                 copyProperties(o, t);
                 resultList.add(t);
             } catch (Exception e) {
-                throw new RuntimeException(e);
+                throw new SxmdException("对象拷贝错误", e);
             }
         }
         return resultList;
     }
 
     private static <T> Constructor<T> getConstructorAccess(Class<T> targetClass) {
-        Constructor<T> constructorAccess = CONSTRUCTOR_ACCESS_CACHE.get(targetClass.getName());
+        Constructor<T> constructorAccess = (Constructor<T>) CONSTRUCTOR_ACCESS_CACHE.get(targetClass.getName());
         if (constructorAccess != null) {
             return constructorAccess;
         }
@@ -93,7 +96,7 @@ public class BeanUtil {
             constructorAccess.newInstance();
             CONSTRUCTOR_ACCESS_CACHE.put(targetClass.toString(), constructorAccess);
         } catch (Exception e) {
-            throw new RuntimeException(format("Create new instance of %s failed: %s", targetClass, e.getMessage()));
+            throw new SxmdException(format("Create new instance of %s failed: %s", targetClass, e.getMessage()));
         }
         return constructorAccess;
     }
