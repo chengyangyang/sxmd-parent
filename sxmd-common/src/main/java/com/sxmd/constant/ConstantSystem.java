@@ -12,6 +12,7 @@ public final class ConstantSystem {
     private ConstantSystem() {
     }
 
+    // =============== 数字相关 ==================== //
     /**
      * 数字
      */
@@ -37,5 +38,11 @@ public final class ConstantSystem {
     public static final String STR_NUM_SIX = "6";
 
     public static final String CHARSET_UTF_8 = "UTF-8";
+
+    // =============== 错误提示 ==================== //
+    /**
+     * 错误流提示
+     */
+    public static final String ERROR_MESSAGE_CLOSE_STREAM = "关闭流出现异常";
 
 }

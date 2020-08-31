@@ -103,18 +103,41 @@ public class DateConverter implements Converter<String, Date> {
     }
 
 
+    /**
+     * Description: 这里不能使用lambda,lambda 不能获取到接口的泛型
+     *
+     * @param :
+     * @return
+     * @author cy
+     * @date 2020/8/31 18:26
+     */
     @Bean
     public Converter<String, LocalDate> localDateConverter() {
-        return x -> Optional.ofNullable(LocalTimeUtil.stringToLocalDate(x)).orElse(null);
+        return new Converter<String, LocalDate>() {
+            @Override
+            public LocalDate convert(String source) {
+                return Optional.ofNullable(LocalTimeUtil.stringToLocalDate(source)).orElse(null);
+            }
+        };
     }
 
     @Bean
     public Converter<String, LocalDateTime> localDateTimeConverter() {
-        return x -> Optional.ofNullable(LocalTimeUtil.stringToLocalDateTime(x)).orElse(null);
+        return new Converter<String, LocalDateTime>() {
+            @Override
+            public LocalDateTime convert(String source) {
+                return Optional.ofNullable(LocalTimeUtil.stringToLocalDateTime(source)).orElse(null);
+            }
+        };
     }
 
     @Bean
     public Converter<String, LocalTime> localTimeConverter() {
-        return x -> Optional.ofNullable(LocalTimeUtil.stringToLocalTime(x)).orElse(null);
+        return new Converter<String, LocalTime>() {
+            @Override
+            public LocalTime convert(String source) {
+                return Optional.ofNullable(LocalTimeUtil.stringToLocalTime(source)).orElse(null);
+            }
+        };
     }
 }

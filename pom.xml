@@ -17,9 +17,11 @@
 
     <!-- 版本控制 -->
     <properties>
-
+        <!-- 自定义包 -->
         <sxmd-common.version>1.0.0-SNAPSHOT</sxmd-common.version>
         <sxmd-web.version>1.0.0-SNAPSHOT</sxmd-web.version>
+        <sxmd-httpclient.version>1.0.0-SNAPSHOT</sxmd-httpclient.version>
+
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
@@ -34,12 +36,33 @@
     <modules>
         <module>sxmd-common</module>
         <module>sxmd-web</module>
+        <module>sxmd-httpclient</module>
     </modules>
 
 
     <!-- 相当于使用父 pom-->
     <dependencyManagement>
         <dependencies>
+            <!-- 自定定义扩展包 -->
+            <!-- 所有自定义包都包含common 该模块-->
+            <dependency>
+                <groupId>com.sxmd</groupId>
+                <artifactId>sxmd-common</artifactId>
+                <version>${sxmd-common.version}</version>
+            </dependency>
+            <!-- web 模块的引入包含swagger + mybatis-plus-->
+            <dependency>
+                <groupId>com.sxmd</groupId>
+                <artifactId>sxmd-web</artifactId>
+                <version>${sxmd-web.version}</version>
+            </dependency>
+            <!-- http client 客户端工具-->
+            <dependency>
+                <groupId>com.sxmd</groupId>
+                <artifactId>sxmd-httpclient</artifactId>
+                <version>${sxmd-httpclient.version}</version>
+            </dependency>
+
             <dependency>
                 <!-- Import dependency management from Spring Boot -->
                 <groupId>org.springframework.boot</groupId>
@@ -61,16 +84,6 @@
                 <version>${spring-cloud-alibaba.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>com.sxmd</groupId>
-                <artifactId>sxmd-common</artifactId>
-                <version>${sxmd-common.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.sxmd</groupId>
-                <artifactId>sxmd-web</artifactId>
-                <version>${sxmd-web.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
