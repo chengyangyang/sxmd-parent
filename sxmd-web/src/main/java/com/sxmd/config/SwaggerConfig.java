@@ -20,7 +20,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Description: swagger3 配置文件
+ * Description: swagger 配置文件
  *
  * @author cy
  * @date 2020年08月18日 8:55
@@ -30,7 +30,7 @@ import java.util.List;
 @Configuration
 public class SwaggerConfig {
 
-    private static final String DEFALUT_SCHEME = "ApiKey";
+    private static final String SCHEME_API_KEY = "ApiKey";
 
     /**
      * 授权范围，   如  all|所有,server|服务  名称和描述用|隔开，多个用,隔开
@@ -39,6 +39,7 @@ public class SwaggerConfig {
     private String scope;
     /**
      * 授权类型  ApiKey和OAuth2 默认是 OAuth2
+     * 如果选用 ApiKey 生成的token 前面要统一加上 "Bearer "
      */
     @Value("${web.swagger.security-scheme:}")
     private String securityScheme;
@@ -64,7 +65,7 @@ public class SwaggerConfig {
                 .select()
                 .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
                 .paths(PathSelectors.any()).build().securityContexts(Collections.singletonList(securityContexts()));
-        if (StringUtils.isNotBlank(securityScheme) && DEFALUT_SCHEME.equals(securityScheme)) {
+        if (StringUtils.isNotBlank(securityScheme) && SCHEME_API_KEY.equals(securityScheme)) {
             docket.securitySchemes(Collections.singletonList(apiKey()));
         } else {
             docket.securitySchemes(Collections.singletonList(securitySchemeOauthPassword()));
@@ -118,8 +119,12 @@ public class SwaggerConfig {
      * 设置 swagger2 认证的安全上下文
      */
     private SecurityContext securityContexts() {
+        String referenceName = "oauth";
+        if (StringUtils.isNotBlank(securityScheme) && SCHEME_API_KEY.equals(securityScheme)) {
+            referenceName = "Bearer";
+        }
         return SecurityContext.builder()
-                .securityReferences(Collections.singletonList(new SecurityReference("oauth", scopes().toArray(new AuthorizationScope[scopes().size()]))))
+                .securityReferences(Collections.singletonList(new SecurityReference(referenceName, scopes().toArray(new AuthorizationScope[scopes().size()]))))
                 .forPaths(PathSelectors.any())
                 .build();
     }
