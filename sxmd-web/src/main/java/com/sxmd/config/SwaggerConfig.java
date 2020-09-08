@@ -28,35 +28,38 @@ import java.util.List;
  */
 @EnableOpenApi
 @Configuration
-public class Swagger3Config {
+public class SwaggerConfig {
 
     private static final String DEFALUT_SCHEME = "ApiKey";
 
     /**
      * 授权范围，   如  all|所有,server|服务  名称和描述用|隔开，多个用,隔开
      */
-    @Value("${web.swagger.scope:''}")
+    @Value("${web.swagger.scope:}")
     private String scope;
     /**
      * 授权类型  ApiKey和OAuth2 默认是 OAuth2
      */
-    @Value("${web.swagger.security-scheme:''}")
+    @Value("${web.swagger.security-scheme:}")
     private String securityScheme;
 
     /**
      * apiKey 配置
      */
-    @Value("${web.swagger.api-key.keyname:''}")
+    @Value("${web.swagger.api-key.keyname:}")
     private String keyName;
     /**
      * apiKey 配置
      */
-    @Value("${web.swagger.api-key.pass-as:''}")
+    @Value("${web.swagger.api-key.pass-as:}")
     private String passAs;
+
+    @Value("${web.swagger.oauth-token-url:}")
+    private String tokenUrl;
 
     @Bean
     public Docket createRestApi() {
-        Docket docket = new Docket(DocumentationType.OAS_30)
+        Docket docket = new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
                 .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
@@ -77,7 +80,7 @@ public class Swagger3Config {
      */
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("Swagger3接口文档")
+                .title("Swagger接口文档")
                 .description("文档描述")
                 .contact(new Contact("cyy", "https://github.com/chengyangyang/springcloud-template.git", "390518881@qq.com"))
                 .version("1.0")
@@ -88,7 +91,10 @@ public class Swagger3Config {
      * oauth 认证方式，使用密码的方式
      */
     private SecurityScheme securitySchemeOauthPassword() {
-        GrantType grantType = new ResourceOwnerPasswordCredentialsGrant("/oauth/token");
+        if (StringUtils.isBlank(tokenUrl)) {
+            tokenUrl = "/oauth/token";
+        }
+        GrantType grantType = new ResourceOwnerPasswordCredentialsGrant(tokenUrl);
         return new OAuthBuilder()
                 .name("oauth")
                 .grantTypes(Collections.singletonList(grantType))
@@ -113,8 +119,8 @@ public class Swagger3Config {
      */
     private SecurityContext securityContexts() {
         return SecurityContext.builder()
-                .securityReferences(Collections.singletonList(new SecurityReference("Bearer", scopes().toArray(new AuthorizationScope[scopes().size()]))))
-                // .forPaths(PathSelectors.any())
+                .securityReferences(Collections.singletonList(new SecurityReference("oauth", scopes().toArray(new AuthorizationScope[scopes().size()]))))
+                .forPaths(PathSelectors.any())
                 .build();
     }
 
