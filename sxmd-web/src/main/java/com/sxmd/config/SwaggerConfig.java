@@ -39,9 +39,9 @@ public class SwaggerConfig {
     private String scope;
     /**
      * 授权类型  ApiKey和OAuth2 默认是 OAuth2
-     * 如果选用 ApiKey 生成的token 前面要统一加上 "Bearer "
+     * 如果选用 ApiKey 生成的 jwt token 前面要统一加上 "Bearer token" 注意Bearer和token 之间有一个空格
      */
-    @Value("${web.swagger.security-scheme:}")
+    @Value("${web.swagger.security-scheme:ApiKey}")
     private String securityScheme;
 
     /**
@@ -112,6 +112,7 @@ public class SwaggerConfig {
         if (StringUtils.isNotBlank(passAs)) {
             pass = passAs;
         }
+        // JWT授权，token格式，在输入框中输入Bearer {token}即可，注意Bearer和token之间有一个空格
         return new ApiKey("Bearer", key, pass);
     }
 
