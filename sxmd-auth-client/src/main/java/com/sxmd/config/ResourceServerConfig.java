@@ -3,6 +3,7 @@ package com.sxmd.config;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,6 +26,7 @@ import java.util.List;
  */
 @Configuration
 @EnableResourceServer
+@ConditionalOnExpression("${sxmd.auth.resource-server.enabled:true}")
 @Slf4j
 public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
@@ -33,7 +35,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
      */
     private static final String PRE_SIGNING_KEY = "SXMD-";
 
-    @Value("${jwt.signing-key:}")
+    @Value("${sxmd.jwt.signing-key:}")
     private String signingKey;
     @Autowired
     private AuthIgnoreUrl authIgnoreUrl;

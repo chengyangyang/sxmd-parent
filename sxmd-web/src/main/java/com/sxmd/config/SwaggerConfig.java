@@ -35,27 +35,27 @@ public class SwaggerConfig {
     /**
      * 授权范围，   如  all|所有,server|服务  名称和描述用|隔开，多个用,隔开
      */
-    @Value("${web.swagger.scope:}")
+    @Value("${sxmd.web.swagger.scope:}")
     private String scope;
     /**
      * 授权类型  ApiKey和OAuth2 默认是 OAuth2
      * 如果选用 ApiKey 生成的 jwt token 前面要统一加上 "Bearer token" 注意Bearer和token 之间有一个空格
      */
-    @Value("${web.swagger.security-scheme:ApiKey}")
+    @Value("${sxmd.web.swagger.security-scheme:ApiKey}")
     private String securityScheme;
 
     /**
      * apiKey 配置
      */
-    @Value("${web.swagger.api-key.keyname:}")
+    @Value("${sxmd.web.swagger.api-key.keyname:}")
     private String keyName;
     /**
      * apiKey 配置
      */
-    @Value("${web.swagger.api-key.pass-as:}")
+    @Value("${sxmd.web.swagger.api-key.pass-as:}")
     private String passAs;
 
-    @Value("${web.swagger.oauth-token-url:}")
+    @Value("${sxmd.web.swagger.oauth-token-url:}")
     private String tokenUrl;
 
     @Bean

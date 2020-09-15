@@ -15,8 +15,10 @@
 
 ## 配置使用说明
 ```
-修改jwt密钥。如：jwt.signing-key=123，该密钥和授权中心保持一致
+修改jwt密钥。如：sxmd.jwt.signing-key=123，该密钥和授权中心保持一致
 
 默认url授权忽略 swagger、knife4j。如需要自定义可继承 AbstractAuthIgnoreUrl 自定义。
+
+资源服务器默认是开启 sxmd.auth.resource-server.enabled:true
 
 ```

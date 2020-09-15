@@ -19,10 +19,10 @@ mybatis-plus 分页配置。sxmd.web.mybatis-plus-page-config.enabled:true
 
 swagger 配置开启关闭 sxmd.web.swagger-web-mvc.enabled:true
 swagger 授权类型。ApiKey 和OAuth2。 web.swagger.security-scheme:ApiKey
-授权范围 web.swagger.scope= 例如 all|所有,server|服务  名称和描述用|隔开，多个用,隔开
-apiKey keyname配置 web.swagger.api-key.keyname=Authorization
-apiKey token位置配置 web.swagger.api-key.pass-as=header
-OAuth2 登录配置 web.swagger.oauth-token-url=/oauth/token
+授权范围 sxmd.web.swagger.scope= 例如 all|所有,server|服务  名称和描述用|隔开，多个用,隔开
+apiKey keyname配置 sxmd.web.swagger.api-key.keyname=Authorization
+apiKey token位置配置 sxmd.web.swagger.api-key.pass-as=header
+OAuth2 登录配置 sxmd.web.swagger.oauth-token-url=/oauth/token
 
 ```
 
