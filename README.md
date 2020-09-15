@@ -19,3 +19,11 @@ sxmd-template 一个常用Java框架模板，支持springcloud
 - lombok
 - idea
 - ...
+
+## 相关项目
+```
+sxmd-tmplate 提供一个使用的模板示例
+sxmd-auth 授权服务中心
+sxmd-gateway 网关项目
+
+```
