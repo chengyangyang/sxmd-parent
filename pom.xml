@@ -21,14 +21,21 @@
         <sxmd-common.version>1.0.0-SNAPSHOT</sxmd-common.version>
         <sxmd-web.version>1.0.0-SNAPSHOT</sxmd-web.version>
         <sxmd-httpclient.version>1.0.0-SNAPSHOT</sxmd-httpclient.version>
+        <sxmd-auth-client.version>1.0.0-SNAPSHOT</sxmd-auth-client.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
+
         <spring-boot.version>2.2.5.RELEASE</spring-boot.version>
         <spring-cloud.version>Hoxton.SR3</spring-cloud.version>
         <spring-cloud-alibaba.version>2.2.1.RELEASE</spring-cloud-alibaba.version>
+
         <commons-lang3.version>3.10</commons-lang3.version>
+        <httpclient.version>4.5.12</httpclient.version>
+        <hutool-all.version>5.4.2</hutool-all.version>
+        <knife4j-spring-ui.version>2.0.4</knife4j-spring-ui.version>
+        <mybatis-plus-boot-starter.version>3.3.1</mybatis-plus-boot-starter.version>
         <springfox-boot-starter.version>3.0.0-SNAPSHOT</springfox-boot-starter.version>
     </properties>
 
@@ -37,6 +44,7 @@
         <module>sxmd-common</module>
         <module>sxmd-web</module>
         <module>sxmd-httpclient</module>
+        <module>sxmd-auth-client</module>
     </modules>
 
 
@@ -61,6 +69,12 @@
                 <groupId>com.sxmd</groupId>
                 <artifactId>sxmd-httpclient</artifactId>
                 <version>${sxmd-httpclient.version}</version>
+            </dependency>
+            <!-- 资源服务器 登录客户端-->
+            <dependency>
+                <groupId>com.sxmd</groupId>
+                <artifactId>sxmd-auth-client</artifactId>
+                <version>${sxmd-auth-client.version}</version>
             </dependency>
 
             <dependency>

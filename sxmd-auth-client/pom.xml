@@ -8,26 +8,20 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>sxmd-common</artifactId>
-    <version>${sxmd-common.version}</version>
+    <artifactId>sxmd-auth-client</artifactId>
+    <version>${sxmd-auth-client.version}</version>
 
     <description>
-
-        提供一个java的基本封装包及工具
-
+        授权服务客户端，如果想要登录直接引入该模块即可
     </description>
 
     <dependencies>
+        <!-- 授权包-->
         <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>${commons-lang3.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>cn.hutool</groupId>
-            <artifactId>hutool-all</artifactId>
-            <version>${hutool-all.version}</version>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-oauth2</artifactId>
         </dependency>
     </dependencies>
+
 
 </project>

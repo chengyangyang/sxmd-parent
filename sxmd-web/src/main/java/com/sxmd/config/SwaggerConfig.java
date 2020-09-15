@@ -126,7 +126,6 @@ public class SwaggerConfig {
         }
         return SecurityContext.builder()
                 .securityReferences(Collections.singletonList(new SecurityReference(referenceName, scopes().toArray(new AuthorizationScope[scopes().size()]))))
-                .forPaths(PathSelectors.any())
                 .build();
     }
 
