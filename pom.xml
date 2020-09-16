@@ -22,6 +22,7 @@
         <sxmd-web.version>1.0.0-SNAPSHOT</sxmd-web.version>
         <sxmd-httpclient.version>1.0.0-SNAPSHOT</sxmd-httpclient.version>
         <sxmd-auth-client.version>1.0.0-SNAPSHOT</sxmd-auth-client.version>
+        <sxmd-generate.version>1.0.0-SNAPSHOT</sxmd-generate.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -45,6 +46,7 @@
         <module>sxmd-web</module>
         <module>sxmd-httpclient</module>
         <module>sxmd-auth-client</module>
+        <module>sxmd-generate</module>
     </modules>
 
 
@@ -75,6 +77,13 @@
                 <groupId>com.sxmd</groupId>
                 <artifactId>sxmd-auth-client</artifactId>
                 <version>${sxmd-auth-client.version}</version>
+            </dependency>
+            <!-- 代码生成 -->
+            <dependency>
+                <groupId>com.sxmd</groupId>
+                <artifactId>sxmd-generate</artifactId>
+                <version>${sxmd-generate.version}</version>
+                <scope>test</scope>
             </dependency>
 
             <dependency>
@@ -120,6 +129,19 @@
                 </configuration>
             </plugin>
         </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+            <resource>
+                <directory>src/main/java/</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+
     </build>
 
 
