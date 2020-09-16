@@ -12,6 +12,7 @@ spring:
   freemarker:
     cache: false
     suffix: .ftl
+    template-loader-path: classpath:/templates/ftl/
     settings:
       template_update_delay: 0
       classic_compatible: true

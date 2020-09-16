@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="shortcut icon" href="./../static/images/125.ico" mce_href="./../static/images/125.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../../static/images/125.ico" mce_href="./../static/images/125.ico" type="image/x-icon">
     <title>代码生成</title>
 </head>
 <style>
@@ -71,8 +71,6 @@
                 </tr>
             </#list>
             </table>
-
-
         </div>
     </div>
 </body>
