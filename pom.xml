@@ -78,12 +78,11 @@
                 <artifactId>sxmd-auth-client</artifactId>
                 <version>${sxmd-auth-client.version}</version>
             </dependency>
-            <!-- 代码生成 -->
+            <!-- 代码生成 辅助工具，使用后，可以删除-->
             <dependency>
                 <groupId>com.sxmd</groupId>
                 <artifactId>sxmd-generate</artifactId>
                 <version>${sxmd-generate.version}</version>
-                <scope>test</scope>
             </dependency>
 
             <dependency>

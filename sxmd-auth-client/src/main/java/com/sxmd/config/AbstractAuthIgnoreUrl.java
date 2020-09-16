@@ -22,6 +22,8 @@ public abstract class AbstractAuthIgnoreUrl implements AuthIgnoreUrl {
         // knife4j
         list.add("/doc.html");
         list.add("/webjars/**");
+        // 代码生成
+        list.add("/generate/**");
         return list;
     }
 }

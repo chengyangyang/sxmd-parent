@@ -11,7 +11,7 @@
 spring:
   freemarker:
     cache: false
-    suffix: .html
+    suffix: .ftl
     settings:
       template_update_delay: 0
       classic_compatible: true
@@ -19,7 +19,7 @@ spring:
 
 # 支持 postgresql /mysql/
 # generator 配置
-summit:
+sxmd:
   # 数据库的选择
   basedate: mysql
   #  table表名称转化为java类的名称策略（默认都会进行驼峰转化）  0 原文件名称  1 去掉第一个_前面的部分  或者填写自己想要的名称，规则和表名称命名相同
