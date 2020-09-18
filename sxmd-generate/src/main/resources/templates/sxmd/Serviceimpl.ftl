@@ -3,10 +3,10 @@ package com.sxmd.content.${folderName!''}.service;
 
 import com.baomidou.mybatisplus.core.toolkit.IdWorker;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.sxmd.base.page.PageBuilder;
-import com.sxmd.base.page.PageResult;
-import com.sxmd.base.page.PageStart;
-import com.sxmd.base.page.RequestPage;
+import com.sxmd.base.BasePage;
+import com.sxmd.base.PageBuilder;
+import com.sxmd.base.PageStart;
+import com.sxmd.base.RequestPage;
 import com.sxmd.content.${folderName!''}.mapper.${table.tableNameToJavaName}Mapper;
 import com.sxmd.content.${folderName!''}.entity.${table.tableNameToJavaName}Entity;
 import com.sxmd.content.${folderName!''}.model.*;
@@ -14,6 +14,7 @@ import com.sxmd.util.AssertUtil;
 import com.sxmd.util.BeanUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 /**

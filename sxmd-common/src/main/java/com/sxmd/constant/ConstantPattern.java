@@ -23,9 +23,10 @@ public final class ConstantPattern {
     public static final String REGEX_ALPHANUMERIC_UNDERLINE = "^[0-9a-zA-Z_]+$";
 
     /**
-     * 数字校验
+     * 数字校验,包含小数点
      */
     public static final String REGEX_NUMBER = "(\\s)*([+-])?(([0-9]*\\.)?([0-9]+)|([0-9]+)(\\.[0-9]*)?)([eE][\\+-]?[0-9]+)?(\\s)*";
+
 
     /**
      * 时间

@@ -106,4 +106,35 @@ public class AssertUtil {
         }
     }
 
+    /**
+     * Description:   断言boolean
+     *
+     * @param bool:
+     * @param msssage:
+     * @return void
+     * @author cy
+     * @date 2020/8/14 17:02
+     */
+    public static void isFalse(Boolean bool, String msssage) {
+        if (bool == null || bool) {
+            throw new SxmdException(msssage);
+        }
+    }
+
+    /**
+     * Description:   断言boolean
+     *
+     * @param bool:
+     * @param msssage:
+     * @return void
+     * @author cy
+     * @date 2020/8/14 17:02
+     */
+    public static void isTrue(Boolean bool, String msssage) {
+        if (bool == null || !bool) {
+            throw new SxmdException(msssage);
+        }
+    }
+
+
 }

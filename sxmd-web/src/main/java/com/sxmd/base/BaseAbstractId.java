@@ -14,6 +14,6 @@ import lombok.Data;
 public abstract class BaseAbstractId {
 
     @ApiModelProperty(value = "主键")
-    private Long id;
+    private String id;
 
 }

@@ -1,8 +1,8 @@
 package com.sxmd.content.${folderName!''}.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.sxmd.base.page.PageResult;
-import com.sxmd.base.page.RequestPage;
+import com.sxmd.base.BasePage;
+import com.sxmd.base.RequestPage;
 import com.sxmd.content.${folderName!''}.entity.${table.tableNameToJavaName}Entity;
 import com.sxmd.content.${folderName!''}.model.*;
 

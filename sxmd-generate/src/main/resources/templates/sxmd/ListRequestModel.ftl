@@ -13,6 +13,6 @@ import lombok.Data;
  */
 @Data
 @ApiModel(value = "${table.tableComment!''}列表参数", description = "接收参数 query")
-public class ${fileName} extends RequestPage {
+public class ${fileName} {
 
 }
