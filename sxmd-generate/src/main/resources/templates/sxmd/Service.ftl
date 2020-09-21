@@ -74,7 +74,7 @@ public interface ${fileName} extends IService<${table.tableNameToJavaName}Entity
      * @param listRequestModel: 参数
      * @date
      */
-    PageResult<${table.tableNameToJavaName}ListResponseModel> findPage${table.tableNameToJavaName}List(RequestPage requestPage,${table.tableNameToJavaName}ListRequestModel listRequestModel);
+    BasePage<${table.tableNameToJavaName}ListResponseModel> findPage${table.tableNameToJavaName}List(RequestPage requestPage,${table.tableNameToJavaName}ListRequestModel listRequestModel);
 
     /**
      * Description:   ${table.tableComment!''}-所有数据

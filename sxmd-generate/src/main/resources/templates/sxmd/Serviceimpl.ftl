@@ -117,11 +117,11 @@ public class ${fileName} extends ServiceImpl<${table.tableNameToJavaName}Mapper,
      * @date
      */
     @Override
-    public PageResult<${table.tableNameToJavaName}ListResponseModel> findPage${table.tableNameToJavaName}List(RequestPage requestPage, ${table.tableNameToJavaName}ListRequestModel listRequestModel) {
+    public BasePage<${table.tableNameToJavaName}ListResponseModel> findPage${table.tableNameToJavaName}List(RequestPage requestPage, ${table.tableNameToJavaName}ListRequestModel listRequestModel) {
         // 使用page 开始
         PageStart<${table.tableNameToJavaName}ListResponseModel> pageStart = PageBuilder.builderPageStart(requestPage);
         List<${table.tableNameToJavaName}ListResponseModel> list = baseMapper.find${table.tableNameToJavaName}List(pageStart, listRequestModel);
-        return PageBuilder.builderPageResult(pageStart, list);
+        return PageBuilder.builderResultPage(pageStart, list);
     }
 
     /**

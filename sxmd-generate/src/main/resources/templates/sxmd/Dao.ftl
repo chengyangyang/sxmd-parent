@@ -3,6 +3,7 @@ package com.sxmd.content.${folderName!''}.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.sxmd.base.PageStart;
 import com.sxmd.content.${folderName!''}.entity.${table.tableNameToJavaName}Entity;
+import com.sxmd.content.${folderName!''}.model.${table.tableNameToJavaName}ListModel;
 import com.sxmd.content.${folderName!''}.model.${table.tableNameToJavaName}ListResponseModel;
 import com.sxmd.content.${folderName!''}.model.${table.tableNameToJavaName}ListRequestModel;
 import org.apache.ibatis.annotations.Param;
