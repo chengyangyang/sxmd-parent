@@ -86,7 +86,7 @@ public class AssertUtil {
      * @date 2020/8/14 17:02
      */
     public static void isNotBlank(String str, String message) {
-        if (StringUtils.isNotBlank(str)) {
+        if (!StringUtils.isNotBlank(str)) {
             throw new SxmdException(message);
         }
     }
@@ -101,7 +101,7 @@ public class AssertUtil {
      * @date 2020/8/14 17:02
      */
     public static void isNotBlank(String str, ResponseCodeEnum responseCodeEnum) {
-        if (StringUtils.isNotBlank(str)) {
+        if (!StringUtils.isNotBlank(str)) {
             throw new SxmdException(responseCodeEnum);
         }
     }
