@@ -26,7 +26,7 @@ public class CustomExceptionHandle {
         if (e.getResponseCodeEnum() != null) {
             return JsonResultBuilder.build(e.getResponseCodeEnum());
         } else {
-            return JsonResultBuilder.build(ResponseCodeEnum.CODE_9999, e);
+            return JsonResultBuilder.build(ResponseCodeEnum.CODE_9999, e.getMessage());
         }
     }
 
