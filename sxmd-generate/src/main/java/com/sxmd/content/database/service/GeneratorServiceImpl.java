@@ -155,6 +155,8 @@ public class GeneratorServiceImpl implements GeneratorService {
             // 对文件进行处理（替换标识符的内容）
             fileName = MessageFormat.format(ftlEntity.getCreateFileName(), table.getTableNameToJavaName());
             map.put("fileName", fileName.substring(0, fileName.lastIndexOf('.')));
+            // 首字母大写
+            fileName = StringUtils.capitalize(fileName);
         }
         map.put("folderName", mkdirName);
         map.put("urlName", SqlToJavaHelp.urlNameByTable(tableName));
